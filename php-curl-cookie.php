@@ -38,7 +38,7 @@ class CurlCookieHandler {
     }
     
     // Fungsi untuk request dengan cookie yang sudah ada
-    public function requestWithCookie($url, $method = 'GET', $postData = null, $headers2) {
+    public function requestWithCookie($url, $method = 'GET', $postData, $headers2 = null) {
         $ch = curl_init();
         
         $options = [
