@@ -50,7 +50,7 @@ class CurlCookieHandler {
         ];
         
         if ($method === 'PATCH') {
-            $options[CURLOPT_PATCH] = true;
+            $options[CURLOPT_POST] = true;
             $options[CURLOPT_POSTFIELDS] = http_build_query($postData);
         }
         
