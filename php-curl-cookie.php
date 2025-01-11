@@ -49,8 +49,8 @@ class CurlCookieHandler {
             CURLOPT_FOLLOWLOCATION => true
         ];
         
-        if ($method === 'POST') {
-            $options[CURLOPT_POST] = true;
+        if ($method === 'PATCH') {
+            $options[CURLOPT_PATCH] = true;
             $options[CURLOPT_POSTFIELDS] = http_build_query($postData);
         }
         
@@ -106,13 +106,15 @@ try {
         'https://btcspinner.io/spinner'
     );
     
-    // Contoh POST request dengan cookie
+    // Contoh PATCH request dengan cookie
     $postData = [
-        'key' => 'value'
+        '_token' => 'cHUwzzXkYR1Dsl7WX2CrVPRstpvUj0uQXpTEHLAw',
+        'token' => 'user_f1c95c9afd4aeffea4be05608042b8ab',
+        'coins' => '9.074291481960144'
     ];
     $postResponse = $cookieHandler->requestWithCookie(
         'https://btcspinner.io/spinner',
-        'POST',
+        'PATCH',
         $postData
     );
     
