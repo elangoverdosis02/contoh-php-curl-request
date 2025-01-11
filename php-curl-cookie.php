@@ -38,7 +38,7 @@ class CurlCookieHandler {
     }
     
     // Fungsi untuk request dengan cookie yang sudah ada
-    public function requestWithCookie($url, $method = 'GET', $postData = null) {
+    public function requestWithCookie($url, $method = 'GET', $postData = null, $headers2) {
         $ch = curl_init();
         
         $options = [
@@ -50,8 +50,12 @@ class CurlCookieHandler {
         ];
         
         if ($method === 'PATCH') {
-            $options[CURLOPT_POST] = true;
-            $options[CURLOPT_POSTFIELDS] = http_build_query($postData);
+        
+        $options[CURLOPT_FOLLOWLOCATION] = true,
+        $options[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1,
+        $options[CURLOPT_CUSTOMREQUEST] = 'PATCH',
+        $options[CURLOPT_POSTFIELDS] = json_encode($postData),
+        $options[CURLOPT_HTTPHEADER] = $headers2
         }
         
         curl_setopt_array($ch, $options);
@@ -86,6 +90,26 @@ class CurlCookieHandler {
 
 // Contoh penggunaan
 try {
+
+      $headers2 = [
+     'upgrade-insecure-requests: 1',
+      'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+       'accept: application/json, text/javascript, */*; q=0.01',
+       'x-requested-with: mark.via.gp',
+       'sec-ch-ua: "Android WebView";v="131", "Chromium";v="131", "Not_A ',
+       'Brand";v="24"',
+       'content-type: application/x-www-form-urlencoded; charset=UTF-8',
+       'sec-ch-ua-mobile: ?1',
+       'origin: https://btcspinner.io',
+       'sec-fetch-site: same-origin',
+       'sec-fetch-mode: cors',
+       'sec-fetch-dest: empty',
+       'referer: https://btcspinner.io/spinner',
+       'accept-encoding: gzip, deflate, br, zstd',
+       'accept-language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7'
+    
+];
+    
     // Inisialisasi handler
     $cookieHandler = new CurlCookieHandler();
     
@@ -115,7 +139,8 @@ try {
     $postResponse = $cookieHandler->requestWithCookie(
         'https://btcspinner.io/spinner',
         'PATCH',
-        $postData
+        $postData,
+         $headers2
     );
     echo "Login Response: " . $loginResponse . "\n\n";
     echo "PATCH Response: " . $postResponse . "\n\n";
