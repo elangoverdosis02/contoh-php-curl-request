@@ -117,7 +117,8 @@ try {
         'PATCH',
         $postData
     );
-    
+    echo "Login Response: " . $loginResponse . "\n\n";
+    echo "PATCH Response: " . $postResponse . "\n\n";
     // Lihat cookie yang tersimpan
     echo "Stored Cookies:\n";
     echo $cookieHandler->getCookies();
