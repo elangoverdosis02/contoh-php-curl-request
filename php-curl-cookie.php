@@ -51,11 +51,11 @@ class CurlCookieHandler {
         
         if ($method === 'PATCH') {
         
-        $options[CURLOPT_FOLLOWLOCATION] = true,
-        $options[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1,
-        $options[CURLOPT_CUSTOMREQUEST] = 'PATCH',
-        $options[CURLOPT_POSTFIELDS] = json_encode($postData),
-        $options[CURLOPT_HTTPHEADER] = $headers2
+        $options[CURLOPT_FOLLOWLOCATION] = true;
+        $options[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1;
+        $options[CURLOPT_CUSTOMREQUEST] = 'PATCH';
+        $options[CURLOPT_POSTFIELDS] = json_encode($postData);
+        $options[CURLOPT_HTTPHEADER] = $headers2;
         }
         
         curl_setopt_array($ch, $options);
