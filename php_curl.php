@@ -25,11 +25,11 @@ function makeGetRequest($url, $headers = []) {
 }
 
 // Fungsi untuk melakukan POST request dengan JSON data
-function makePatchRequest($url, $data, $headers = []) {
+function makePatchRequest($url, $data, $headers2 = []) {
     $curl = curl_init();
     
     // Tambahkan header content-type JSON jika belum ada
-    $headers[] = 'Content-Type: application/json';
+    $headers2[] = 'Content-Type: application/json';
     
     curl_setopt_array($curl, [
         CURLOPT_URL => $url,
