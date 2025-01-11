@@ -104,5 +104,5 @@ $postResponse = makePatchRequest(
     $postData,
     $headers2
 );
-echo "POST Response: " . $postResponse . "\n";
+echo "PATCH Response: " . $postResponse . "\n";
 ?>
