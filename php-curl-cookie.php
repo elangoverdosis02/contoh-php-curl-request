@@ -91,19 +91,19 @@ try {
     
     // Data login
     $loginData = [
-        'username' => 'user@example.com',
-        'password' => 'password123'
+        'email' => 'deeniedoank@gmail.com',
+        'password' => 'deenie88'
     ];
     
     // Login dan dapatkan cookie
     $loginResponse = $cookieHandler->loginAndGetCookie(
-        'https://example.com/login',
+        'https://btcspinner.io/login',
         $loginData
     );
     
     // Lakukan request ke halaman yang membutuhkan authentication
     $protectedPageResponse = $cookieHandler->requestWithCookie(
-        'https://example.com/protected-page'
+        'https://btcspinner.io/spinner'
     );
     
     // Contoh POST request dengan cookie
@@ -111,7 +111,7 @@ try {
         'key' => 'value'
     ];
     $postResponse = $cookieHandler->requestWithCookie(
-        'https://example.com/api',
+        'https://btcspinner.io/spinner',
         'POST',
         $postData
     );
